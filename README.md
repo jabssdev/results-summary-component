@@ -14,9 +14,6 @@ This is a solution to the [Results summary component challenge on Frontend Mento
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -30,85 +27,183 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![Results Summary Component Screenshot](./src/assets/images/screenshot.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub Repository](https://github.com/jabssdev/results-summary-component)
+- Live Site URL: [Live Demo](https://results-summary-component-jabssdev.netlify.app/)
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
+- CSS custom properties (CSS variables)
 - Flexbox
-- CSS Grid
+- BEM methodology for CSS naming
+- Modern CSS logical properties
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- Vanilla JavaScript (ES6+)
+- Webpack 5 - Module bundler
+- html-loader - For processing HTML templates
+- MiniCssExtractPlugin - For CSS extraction
+- CopyWebpackPlugin - For copying static assets
+- Webpack Dev Server - For local development
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Through this project, I strengthened my understanding of several key concepts:
 
-To see how you can add code snippets, see below:
+**1. Dynamic Data Population with JSON**
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
+I implemented a JavaScript solution to dynamically load and render data from a JSON file, calculating the average score automatically:
 
-```css
-.proud-of-this-css {
-	color: papayawhip;
+```js
+function loadSummaryData() {
+	const summaryList = document.querySelector(".summary-card__list");
+	summaryList.innerHTML = "";
+
+	data.forEach((item) => {
+		const categoryClass = item.category.toLowerCase();
+		const listItem = `
+      <li class="summary-card__item summary-card__item--${categoryClass}">
+        <div class="summary-card__item--icon">
+          <img src="${item.icon}" alt="" role="presentation" />
+          <span class="summary-card__item--title">${item.category}</span>
+        </div>
+        <div class="summary-card__item--info">
+          <span><strong>${item.score}</strong> / 100</span>
+        </div>
+      </li>
+    `;
+		summaryList.insertAdjacentHTML("beforeend", listItem);
+	});
+
+	const averageScore = Math.round(data.reduce((acc, item) => acc + item.score, 0) / data.length);
+	document.querySelector(".result-card__score--number").textContent = averageScore;
 }
 ```
 
-```js
-const proudOfThisFunc = () => {
-	console.log("🎉");
-};
+**2. Two-Column Layout with Flexbox**
+
+Creating a responsive layout where both cards have equal width and stretch to full height:
+
+```css
+main {
+	display: flex;
+	flex-direction: row;
+	max-width: 65rem;
+	overflow: hidden;
+	border-radius: 3rem;
+}
+
+.result-card,
+.summary-card {
+	flex: 1; /* Both cards take equal space */
+	width: auto;
+}
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+**3. CSS Logical Properties for Better Internationalization**
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+Using logical properties instead of physical ones for better RTL support:
+
+```css
+.result-card {
+	border-end-start-radius: 3.6rem;
+	border-end-end-radius: 3.6rem;
+}
+
+.result-card__title {
+	margin-block-end: 2.4rem;
+}
+
+.summary-card__item--info strong {
+	margin-inline-end: 0.3rem;
+}
+```
+
+**4. BEM Naming Convention for Scalable CSS**
+
+Maintaining a consistent and maintainable CSS architecture:
+
+```css
+.summary-card__item--icon {
+	display: flex;
+	align-items: center;
+	gap: 1.4rem;
+}
+
+.summary-card__item--reaction {
+	background-color: var(--clr-light-red-bg);
+	color: var(--clr-light-red);
+}
+```
+
+**5. Webpack Configuration for Asset Management**
+
+Setting up Webpack to handle multiple asset types and optimize for production:
+
+```js
+module: {
+  rules: [
+    {
+      test: /\.html$/,
+      use: 'html-loader',
+    },
+    {
+      test: /\.css$/,
+      use: [isProduction ? miniCssExtractPlugin.loader : 'style-loader', 'css-loader'],
+    },
+  ],
+},
+plugins: [
+  new CopyPlugin({
+    patterns: [
+      { from: 'src/data.json', to: 'data.json' },
+      { from: 'src/assets', to: 'assets' },
+    ],
+  }),
+]
+```
+
+**6. Accessibility Best Practices**
+
+Implementing proper ARIA labels and semantic HTML:
+
+```html
+<h1 class="visually-hidden">Results Summary</h1>
+<img src="${item.icon}" alt="" role="presentation" />
+<button class="summary-card__button" type="button" aria-label="Continue to the next step">Continue</button>
+```
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+In future projects, I want to continue focusing on:
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+- **Advanced Webpack Optimization**: Exploring code splitting, tree shaking, and lazy loading techniques for better performance
+- **CSS Architecture**: Deepening understanding of CSS Modules and other component-scoped styling approaches
+- **JavaScript Patterns**: Implementing more advanced design patterns like Module Pattern and Observer Pattern
+- **Accessibility Testing**: Using automated tools like axe DevTools and manual testing with screen readers
+- **TypeScript**: Adding type safety to JavaScript projects for better code maintainability
+- **CSS Grid**: Exploring more complex grid layouts for multi-dimensional designs
+- **Progressive Enhancement**: Building experiences that work without JavaScript but enhance with it
+- **Performance Metrics**: Measuring and optimizing Core Web Vitals (LCP, FID, CLS)
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Webpack Documentation](https://webpack.js.org/concepts/) - Essential for understanding module bundling, loaders, and plugins configuration.
+- [CSS-Tricks: A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - Helped me understand how to create equal-height columns with Flexbox.
+- [MDN Web Docs: CSS Logical Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties) - Comprehensive guide on using logical properties for better internationalization.
+- [BEM Methodology](https://getbem.com/) - Clear explanation of BEM naming convention for maintainable CSS architecture.
+- [MDN Web Docs: Array.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) - Helped me calculate the average score from the data array.
+- [MDN Web Docs: insertAdjacentHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML) - Better alternative to innerHTML for dynamically adding HTML content.
+- [web.dev: ARIA Labels](https://web.dev/labels-and-text-alternatives/) - Best practices for labeling interactive elements for screen readers.
+- [Webpack CopyPlugin](https://webpack.js.org/plugins/copy-webpack-plugin/) - Documentation for copying static assets during build process.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- LinkedIn - [@jabssdev](https://www.linkedin.com/in/jabssdev/)
+- Frontend Mentor - [@jabssdev](https://www.frontendmentor.io/profile/jabssdev)
+- Instagram - [@jabssdev](https://www.instagram.com/jabssdev/)
