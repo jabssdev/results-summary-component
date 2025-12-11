@@ -1,0 +1,71 @@
+:root {
+	--clr-light-red: hsl(0, 100%, 67%);
+	--clr-orangey-yellow: hsl(39, 100%, 56%);
+	--clr-green-teal: hsl(166, 100%, 37%);
+	--clr-cobalt-blue: hsl(234, 85%, 45%);
+
+	--clr-light-slate-blue: hsl(252, 100%, 67%);
+	--clr-light-royal-blue: hsl(241, 81%, 54%);
+	--clr-violet-blue: hsla(256, 72%, 46%, 1);
+	--clr-persian-blue: hsla(241, 72%, 46%, 0);
+
+	--clr-white: hsl(0, 0%, 100%);
+	--clr-pale-blue: hsl(221, 100%, 96%);
+	--clr-light-lavender: hsl(241, 100%, 89%);
+	--clr-dark-gray-blue: hsl(224, 30%, 27%);
+
+	font-size: clamp(50%, 0.5vw + 50%, 62.5%);
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@font-face {
+	font-family: "Hanken Grotesk";
+	src: url(./assets/fonts/static/HankenGrotesk-Medium.ttf) format("truetype");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Hanken Grotesk";
+	src: url(./assets/fonts/static/HankenGrotesk-Bold.ttf) format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Hanken Grotesk";
+	src: url(./assets/fonts/static/HankenGrotesk-ExtraBold.ttf) format("truetype");
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+	min-height: 100dvh;
+	font-family: "Hanken Grotesk", sans-serif;
+	line-height: 1.6;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}

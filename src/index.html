@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<meta name="description" content="A results summary component challenge from Frontend Mentor." />
+		<meta name="keywords" content="HTML, CSS, JavaScript, Frontend Mentor, Results Summary Component" />
+		<meta name="author" content="JabssDev" />
+		<title>Frontend Mentor | Results summary component</title>
+		<link rel="shortcut icon" href="./assets/images/favicon-32x32.png" type="image/png" />
+		<link rel="stylesheet" href="./styles.css" />
+	</head>
+	<body>
+		<main>
+			<h1 class="visually-hidden">Results Summary</h1>
+			<section class="result-card">
+				<h2 class="result-card__title">Your Result</h2>
+				<div class="result-card__score">
+					<span class="result-card__score--number">76</span>
+					<span class="result-card__score--out-of">of 100</span>
+				</div>
+				<div class="result-card__rating">
+					<h3 class="result-card__rating--title">Great</h3>
+					<p class="result-card__rating--description">You scored higher than 65% of the people who have taken these tests.</p>
+				</div>
+			</section>
+			<section class="summary-card">
+				<h2 class="summary-card__title">Summary</h2>
+				<ul class="summary-card__list">
+					<li class="summary-card__item summary-card__item--reaction">
+						<div class="summary-card__item--icon">
+							<img src="./assets/images/icon-reaction.svg" alt="Reaction Icon" />
+						</div>
+						<div class="summary-card__item--info">
+							<h3 class="summary-card__item--title">Reaction</h3>
+							<span class="summary-card__item--score"><strong>80</strong> / 100</span>
+						</div>
+					</li>
+					<li class="summary-card__item summary-card__item--memory">
+						<div class="summary-card__item--icon">
+							<img src="./assets/images/icon-memory.svg" alt="Memory Icon" />
+						</div>
+						<div class="summary-card__item--info">
+							<h3 class="summary-card__item--title">Memory</h3>
+							<span class="summary-card__item--score"><strong>92</strong> / 100</span>
+						</div>
+					</li>
+					<li class="summary-card__item summary-card__item--verbal">
+						<div class="summary-card__item--icon">
+							<img src="./assets/images/icon-verbal.svg" alt="Verbal Icon" />
+						</div>
+						<div class="summary-card__item--info">
+							<h3 class="summary-card__item--title">Verbal</h3>
+							<span class="summary-card__item--score"><strong>61</strong> / 100</span>
+						</div>
+					</li>
+					<li class="summary-card__item summary-card__item--visual">
+						<div class="summary-card__item--icon">
+							<img src="./assets/images/icon-visual.svg" alt="Visual Icon" />
+						</div>
+						<div class="summary-card__item--info">
+							<h3 class="summary-card__item--title">Visual</h3>
+							<span class="summary-card__item--score"><strong>73</strong> / 100</span>
+						</div>
+					</li>
+				</ul>
+				<button class="summary-card__button" type="button">Continue</button>
+			</section>
+		</main>
+		<footer class="attribution">
+			Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer" aria-label="Go to the Frontend Mentor website">Frontend Mentor</a>. Coded by
+			<a href="https://www.linkedin.com/in/jabssdev/" target="_blank" rel="noopener noreferrer" aria-label="Go to the LinkedIn profile of JabssDev">JabssDev</a>.
+		</footer>
+	</body>
+</html>
