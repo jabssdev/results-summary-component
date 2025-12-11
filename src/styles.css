@@ -10,8 +10,10 @@
 	--clr-persian-blue: hsla(241, 72%, 46%, 0);
 
 	--clr-white: hsl(0, 0%, 100%);
-	--clr-pale-blue: hsl(221, 100%, 96%);
+	--clr-pale-blue: hsl(222, 100%, 96%);
 	--clr-light-lavender: hsl(241, 100%, 89%);
+	--clr-light-lavender-50: hsla(241, 100%, 89%, 0.5);
+	--clr-light-lavender-90: hsla(241, 100%, 89%, 0.9);
 	--clr-dark-gray-blue: hsl(224, 30%, 27%);
 
 	font-size: clamp(50%, 0.5vw + 50%, 62.5%);
@@ -68,4 +70,80 @@ body {
 	clip: rect(0, 0, 0, 0);
 	white-space: nowrap;
 	border: 0;
+}
+
+main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--clr-pale-blue);
+}
+
+.result-card {
+	width: 100%;
+	padding: 2.4rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(to bottom, var(--clr-light-slate-blue), var(--clr-violet-blue));
+	border-bottom-left-radius: 3.6rem;
+	border-bottom-right-radius: 3.6rem;
+	overflow: hidden;
+	box-shadow: 0 1.6rem 3.2rem rgba(0, 0, 0, 0.1);
+}
+
+.result-card__title {
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: var(--clr-light-lavender-90);
+	margin-bottom: 2rem;
+}
+
+.result-card__score {
+	width: 14.4rem;
+	height: 14.4rem;
+	margin-bottom: 1.8rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(to top, var(--clr-persian-blue), var(--clr-violet-blue));
+	border-radius: 50%;
+}
+
+.result-card__score--number {
+	font-size: 5.6rem;
+	font-weight: 800;
+	line-height: 1.2;
+	color: var(--clr-white);
+}
+
+.result-card__score--out-of {
+	font-size: 1.6rem;
+	font-weight: 700;
+	color: var(--clr-light-lavender-50);
+}
+
+.result-card__rating {
+	max-width: 26rem;
+	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.result-card__rating--title {
+	font-size: 2.2rem;
+	font-weight: 500;
+	color: var(--clr-white);
+	margin-bottom: 0.3rem;
+}
+
+.result-card__rating--description {
+	text-align: center;
+	font-size: 1.6rem;
+	color: var(--clr-light-lavender-90);
+	line-height: 1.4;
 }
