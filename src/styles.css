@@ -20,6 +20,7 @@
 	--clr-light-lavender-90: hsla(241, 100%, 89%, 0.9);
 	--clr-dark-gray-blue: hsl(224, 30%, 27%);
 	--clr-dark-gray-blue-50: hsla(224, 30%, 27%, 0.5);
+	--clr-shadow: hsla(224, 30%, 27%, 0.1);
 
 	font-size: clamp(50%, 0.5vw + 50%, 62.5%);
 }
@@ -93,8 +94,7 @@ main {
 	background: linear-gradient(to bottom, var(--clr-light-slate-blue), var(--clr-violet-blue));
 	border-end-start-radius: 3.6rem;
 	border-end-end-radius: 3.6rem;
-	overflow: hidden;
-	box-shadow: 0 1.6rem 3.2rem rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1.6rem 3.2rem var(--clr-shadow);
 }
 
 .result-card__title {
@@ -288,13 +288,16 @@ main {
 		overflow: hidden;
 		border-radius: 3rem;
 		background-color: white;
-		box-shadow: 0 1.6rem 3.2rem rgba(0, 0, 0, 0.1);
+		box-shadow: 0 1.6rem 3.2rem var(--clr-shadow);
 	}
 
 	.result-card {
 		flex: 1;
 		width: auto;
-		border-radius: 3rem;
+		border-start-start-radius: 3rem;
+		border-end-start-radius: 3rem;
+		border-end-end-radius: 3rem;
+		border-start-end-radius: 3rem;
 		box-shadow: none;
 	}
 
