@@ -1,0 +1,24 @@
+{
+	"name": "results-summary-component",
+	"version": "1.0.0",
+	"description": "This is a solution to the [Results summary component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/results-summary-component-CE_K6s0maV). Frontend Mentor challenges help you improve your coding skills by building realistic projects.",
+	"main": "index.js",
+	"scripts": {
+		"start": "webpack serve --mode development",
+		"build": "webpack --mode production"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"copy-webpack-plugin": "^13.0.1",
+		"css-loader": "^7.1.2",
+		"html-loader": "^5.1.0",
+		"html-webpack-plugin": "^5.6.5",
+		"mini-css-extract-plugin": "^2.9.4",
+		"style-loader": "^4.0.0",
+		"webpack": "^5.103.0",
+		"webpack-cli": "^6.0.1",
+		"webpack-dev-server": "^5.2.2"
+	}
+}

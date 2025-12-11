@@ -1,17 +1,14 @@
-/* import "./styles.css"; */
+import data from "./data.json";
+import "./styles.css";
 
-async function loadSummaryData() {
-	try {
-		const response = await fetch("./data.json");
-		const data = await response.json();
+function loadSummaryData() {
+	const summaryList = document.querySelector(".summary-card__list");
+	summaryList.innerHTML = "";
 
-		const summaryList = document.querySelector(".summary-card__list");
-		summaryList.innerHTML = "";
+	data.forEach((item) => {
+		const categoryClass = item.category.toLowerCase();
 
-		data.forEach((item) => {
-			const categoryClass = item.category.toLowerCase();
-
-			const listItem = `
+		const listItem = `
       <li class="summary-card__item summary-card__item--${categoryClass}">
         <div class="summary-card__item--icon">
           <img src="${item.icon}" alt="" role="presentation" />
@@ -23,14 +20,11 @@ async function loadSummaryData() {
       </li>
     `;
 
-			summaryList.insertAdjacentHTML("beforeend", listItem);
-		});
+		summaryList.insertAdjacentHTML("beforeend", listItem);
+	});
 
-		const averageScore = Math.round(data.reduce((acc, item) => acc + item.score, 0) / data.length);
-		document.querySelector(".result-card__score--number").textContent = Math.round(averageScore);
-	} catch (error) {
-		console.error("Error loading summary data:", error);
-	}
+	const averageScore = Math.round(data.reduce((acc, item) => acc + item.score, 0) / data.length);
+	document.querySelector(".result-card__score--number").textContent = Math.round(averageScore);
 }
 
 document.addEventListener("DOMContentLoaded", loadSummaryData);
